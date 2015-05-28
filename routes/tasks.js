@@ -30,7 +30,7 @@ router.post('/', function(req, res, next){
   });
 });
 
-//delet by id
+//delete by id
 router.delete('/:id', function(req, res, next){
   Task.findByIdAndRemove(req.params.id, req.body,
   function(err,task){
@@ -38,6 +38,7 @@ router.delete('/:id', function(req, res, next){
   });
 });
 
+//update by id
 router.put('/:id', function(req, res, next) {
   console.log(req.body);
   Task.findByIdAndUpdate(req.params.id, req.body,
@@ -46,5 +47,13 @@ router.put('/:id', function(req, res, next) {
   });
 });
 
+//update by id alternate
+router.patch('/:id', function(req, res, next) {
+  console.log(req.body);
+  Task.findByIdAndUpdate(req.params.id, req.body,
+  function(err,task){
+    res.send("patch yo shizz");
+  });
+});
 
 module.exports = router;
